@@ -43,8 +43,8 @@ class Resume extends Application
         $this->add(new Command\VersionCommand());
 
         // We'll use [Twig](http://twig.sensiolabs.org/) for template output
-        $loader = new \Twig_Loader_Filesystem($consoleTemplatePath);
-        $this->twig = new \Twig_Environment(
+        $loader = new \Twig\Loader\FilesystemLoader($consoleTemplatePath);
+        $this->twig = new \Twig\Environment(
             $loader,
             array(
                 "cache"            => false,
@@ -54,10 +54,10 @@ class Resume extends Application
         );
 
         // These are helpers that we use to format output on the cli: styling and padding and such
-        $this->twig->addFilter('pad', new \Twig_Filter_Function("Resume\Cli\TwigFormatters::strpad"));
-        $this->twig->addFilter('style', new \Twig_Filter_Function("Resume\Cli\TwigFormatters::style"));
-        $this->twig->addFilter('repeat', new \Twig_Filter_Function("str_repeat"));
-        $this->twig->addFilter('wrap', new \Twig_Filter_Function("wordwrap"));
+        $this->twig->addFilter(new \Twig\TwigFilter('pad', 'Resume\Cli\TwigFormatters::strpad'));
+        $this->twig->addFilter(new \Twig\TwigFilter('style', 'Resume\Cli\TwigFormatters::style'));
+        $this->twig->addFilter(new \Twig\TwigFilter('repeat', 'str_repeat'));
+        $this->twig->addFilter(new \Twig\TwigFilter('wrap', 'wordwrap'));
     }
 
     public function getLongVersion()
