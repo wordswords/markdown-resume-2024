@@ -58,7 +58,7 @@
         "symfony/config": "v2.3.4",
         "symfony/console": "v2.3.4",
         "symfony/yaml": "v2.3.4",
-        "twig/twig": "v3.18.0",
+        "twig/twig": "v3.27.0",
         "symfony/event-dispatcher": "^4.0@dev"
     },
     "bin": [
